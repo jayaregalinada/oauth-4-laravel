@@ -10,8 +10,10 @@ return array(
 
 	/**
 	 * Storage
+	 *
+	 * Session | LaravelSession
 	 */
-	'storage' => 'Session', 
+	'storage' => 'LaravelSession', 
 
 	/**
 	 * Consumers
