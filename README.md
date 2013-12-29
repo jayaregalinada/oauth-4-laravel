@@ -193,7 +193,7 @@ public function loginWithFacebook() {
 		
 		//Var_dump
 		//display whole array().
-		dd($result);
+		var_dump($result);
 	
 	}
 	// if not ask for permission first
@@ -247,7 +247,7 @@ public function loginWithGoogle() {
 		
 		//Var_dump
 		//display whole array().
-		dd($result);
+		var_dump($result);
 	        
 	}
 	// if not ask for permission first
@@ -298,7 +298,7 @@ In your Controller use the following code:
 
             //Var_dump
             //display whole array().
-            dd($result);
+            var_dump($result);
 
         }// if not ask for permission first
         else {
