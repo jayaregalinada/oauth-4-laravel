@@ -100,7 +100,7 @@ return array(
 	/**
 	 * Storage
 	 */
-	'storage' => 'Session', 
+	'storage' => 'ThomasweltonL4Session', 
 
 	/**
 	 * Consumers
@@ -121,7 +121,7 @@ return array(
 );
 ```
 
-The `Storage` attribute is optional and defaults to `Session`.
+The `Storage` attribute is optional and defaults to `ThomasweltonL4Session`.
 
 Others are 
 
