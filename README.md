@@ -45,6 +45,12 @@ To learn more about Lusitanian/PHPoAuthLib go [here](https://github.com/Lusitani
 Add oauth-4-laravel to your composer.json file:
 
 ```
+"repositories": [
+  {
+    "type": "vcs",
+    "url": "https://github.com/jayaregalinada/oauth-4-laravel"
+  }
+],
 "require": {
   "artdarek/oauth-4-laravel": "dev-master"
 }
@@ -115,8 +121,14 @@ return array(
 );
 ```
 
-The `Storage` attribute is optional and defaults to `Session`. 
-Other [options](https://github.com/Lusitanian/PHPoAuthLib/tree/master/src/OAuth/Common/Storage).
+The `Storage` attribute is optional and defaults to `Session`.
+
+Others are 
+
+ - `ThomasweltonL4Session` from [repo](https://github.com/thomaswelton/laravel-oauth)
+ - `HannesvdvrekenL4Session` from [repo](https://github.com/hannesvdvreken/laravel-oauth)
+ - `Redis`|`Memory`|`Session`|`SymfonySession` from [repo](https://github.com/Lusitanian/PHPoAuthLib/tree/master/src/OAuth/Common/Storage).
+
 
 ## Usage
 
@@ -190,7 +202,8 @@ public function loginWithFacebook() {
 		$url = $fb->getAuthorizationUri();
 		
 		// return to facebook login url
-		return Response::make()->header( 'Location', (string)$url );
+		// or Redirect::to((string) $url);
+		return Redirect::to(htmlspecialchars_decode($url));
 	}
 
 }
@@ -242,8 +255,7 @@ public function loginWithGoogle() {
 		// get googleService authorization
 		$url = $googleService->getAuthorizationUri();
 		
-		// return to facebook login url
-		return Response::make()->header( 'Location', (string)$url );
+		return Redirect::to(htmlspecialchars_decode($url));
 	}
 }
 ```
@@ -294,7 +306,7 @@ In your Controller use the following code:
             $url = $linkedinService->getAuthorizationUri(array('state'=>'DCEEFWF45453sdffef424'));
 
             // return to linkedin login url
-            return Response::make()->header( 'Location', (string)$url );
+            return Redirect::to(htmlspecialchars_decode($url));
         }
 
 
