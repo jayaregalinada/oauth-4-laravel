@@ -19,11 +19,11 @@ The library supports both oAuth 1.x and oAuth 2.0 compliant services. A list of 
 
 Included service implementations:
 
- - OAuth1
+ - __OAuth1__
    - Twitter
    - FitBit
 
- - OAuth2
+ - __OAuth2__
    - Google
    - Microsoft
    - Facebook
@@ -38,7 +38,7 @@ Included service implementations:
    - Tumblr
    - Vkontakte
 
-To learn more about Lusitanian/PHPoAuthLib go [here](https://github.com/Lusitanian/PHPoAuthLib) 
+To learn more about __Lusitanian/PHPoAuthLib__ go [here](https://github.com/Lusitanian/PHPoAuthLib) 
 
 ## Installation
 
