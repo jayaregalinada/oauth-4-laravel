@@ -40,8 +40,17 @@ class OAuth
      */
     public function createStorageInstance($storageName)
     {
-        //$storageClass = "\\OAuth\Common\\Storage\\$storageName";
-        $storageClass = "Common\\Storage\\$storageName"
+        switch ($storageName) {
+            case 'ThomasweltonL4Session':
+            case 'HannesvdvrekenL4Session':
+            $storageClass = "Artdarek\\OAuth\\Common\\Storage\\$storageName";
+            break;
+            
+            default:
+            $storageClass = "\\OAuth\\Common\\Storage\\$storageName";
+            break;
+        }
+        
         $storage = new $storageClass();
 
         return $storage;
@@ -56,7 +65,7 @@ class OAuth
     public function consumer( $service, $url = null, $scope = null ) 
     {
         // get storage object
-        $storage_name = Config::get('oauth-4-laravel::storage', 'Session');
+        $storage_name = Config::get('oauth-4-laravel::storage', 'ThomasweltonL4Session');
         $storage = $this->createStorageInstance( $storage_name );
 
         // create credentials object
