@@ -3,16 +3,17 @@
  * @author     Hannes Van De Vreken <vandevreken.hannes@gmail.com>
  * @copyright  Copyright (c) 2013 The authors
  * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link       https://github.com/hannesvdvreken/laravel-oauth
  */
 
-namespace Artdarek\OAuth\Storage;
+namespace Artdarek\OAuth\Common\Storage;
 
 use OAuth\Common\Token\TokenInterface;
 use OAuth\Common\Storage\Exception\TokenNotFoundException;
 use OAuth\Common\Storage\TokenStorageInterface;
 use Illuminate\Support\Facades\Session;
 
-class LaravelSession implements TokenStorageInterface
+class HannesvdvrekenL4Session implements TokenStorageInterface
 {
     private $sessionVariableName;
 
@@ -100,4 +101,5 @@ class LaravelSession implements TokenStorageInterface
         // allow chaining
         return $this;
     }
+    
 }
