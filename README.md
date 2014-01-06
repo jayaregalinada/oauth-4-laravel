@@ -314,6 +314,54 @@ In your Controller use the following code:
 
 ```
 
+
+###Twitter:
+
+Configuration:
+Add you Twitter credentials to ``app/config/packages/artdarek/oauth-4-laravel/config.php``
+
+```php
+'Twitter' => array(
+	'client_id'     => 'Your Twitter API ID',
+	'client_secret' => 'Your Twitter API Secret',
+),
+```
+In your Controller use the following code:
+
+```php
+public function loginWithTwitter()
+{
+	$oauth_token = Input::get( 'oauth_token' );
+	$oauth_verifier = Input::get('oauth_verifier');
+	$consumer = OAuth::consumer( 'Twitter', 'path/to/redirect' );
+	$consumer->setAuthorizationEndpoint('https://api.twitter.com/oauth/authorize');
+
+	if(!empty($oauth_token)){
+		$token = $consumer->getStorage()->retrieveAccessToken( 'Twitter' );
+
+		$consumer->requestAccessToken(
+			$oauth_token,
+			$oauth_verifier,
+			$token->getRequestTokenSecret()
+		);
+
+		$response = json_decode( $consumer->request('account/verify_credentials.json'), true );
+		//$response = $consumer->getAuthorizationEndpoint();
+
+		return Response::make(var_dump($response));
+	} else {
+		
+		$token = $consumer->requestRequestToken();
+		$url = $consumer->getAuthorizationUri([
+			'oauth_token' => $token->getRequestToken(),
+		]);
+
+		return Redirect::to(htmlspecialchars_decode($url));
+
+	}
+}
+```
+
 ### More usage examples:
 
 For examples go [here](https://github.com/Lusitanian/PHPoAuthLib/tree/master/examples)
